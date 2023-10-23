@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정</title>
+    <script src="update.js"></script>
+</head>
+<body>
+    <form>
+        <label>title : </label><input type="text" id="update_title"> <br>
+        <label>content : </label><textarea id="update_content"></textarea> <br>
+        <img id="previous_image" style="height: 200px;"><button type="button" onclick="deleteArticleImage()">delete</button><p id="img_deletion"></p>
+        <label>image : </label><input type="file" id="update_image"> <br>
+        <label>category : </label><input type="text" id="update_category"> <br>
+        <button type="button" onclick="handleSubmit()">submit</button>
+    </form>
+</body>
+</html>
