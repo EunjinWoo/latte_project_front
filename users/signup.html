@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <script src="api.js"></script>
+  </head>
+  <body>
+    <h1>회원가입 페이지</h1>
+    <form>
+      <input type="text" name="username" id="username" placeholder="username" />
+      <input type="number" name="age" id="age" placeholder="age" />
+      <br />프로필 사진 첨부하기
+      <input
+        type="file"
+        name="profile_img"
+        id="profile_img"
+        placeholder="profile_img"
+      />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="password"
+      />
+      <br />
+      <button type="button" onclick="handleSignin()">회원가입하기</button>
+    </form>
+  </body>
+</html>
