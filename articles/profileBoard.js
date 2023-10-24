@@ -27,7 +27,12 @@ async function loadAdviceArticles() {
             if (j === 1){
                 let img = document.createElement("img");
                 img.id = ids[j];
-                img.src = `http://127.0.0.1:8000${post_data[j]}/`;
+                if (post_data[j] === null){
+                    img.src = "/media/defaultProfile.png";
+                } 
+                else {
+                    img.src = `http://127.0.0.1:8000${post_data[j]}/`;
+                }
                 img.style.height = "200px";
                 post.appendChild(img);
             }
