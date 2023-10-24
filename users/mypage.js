@@ -7,10 +7,8 @@ window.onload = () => {
 }
 
 async function loadMyArticles() {
-    const payload = localStorage.getItem("payload");
-    const payload_parse = JSON.parse(payload);
-    const id = payload_parse.user_id
-    console.log(id)
+    const url = new URL(window.location.href).searchParams;
+    const id = url.get("id");
 
     const response = await fetch ("http://127.0.0.1:8000/articles/", {method: "GET"})
 
@@ -55,9 +53,8 @@ async function requestId() {
 }
 
 async function requestUser() {
-    const payload = localStorage.getItem("payload");
-    const payload_parse = JSON.parse(payload);
-    const id = payload_parse.user_id
+    const url = new URL(window.location.href).searchParams;
+    const id = url.get("id");
     console.log(id)
     const response = await fetch (`http://127.0.0.1:8000/users/${id}/`, {
         method : "GET"
