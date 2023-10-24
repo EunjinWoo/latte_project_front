@@ -9,11 +9,18 @@
   <body>
     <h1>홈페이지</h1>
     <div id="intro"></div>
-    <button type="button" onclick="handleLogout()">로그아웃 하기</button>
-    <button type="button" class="btn btn-primary active" id="btn" 
-	onclick="document.location.href='/users/login.html'">로그인 하기</button>
-  <button type="button" class="btn btn-primary active" id="btn" 
-	onclick="document.location.href='/users/mypage.html'">My Page</button>
+    <button type="button" id= logout_btn onclick="handleLogout()">로그아웃 하기</button>
+    <button type="button" class="btn btn-primary active" id="login_btn" 
+	  onclick="document.location.href='/users/login.html'">로그인 하기</button>
+    <button type="button" class="btn btn-primary active" id="signup_btn" 
+	  onclick="document.location.href='/users/signup.html'">회원가입 하기</button>
+    <br>
+    <button type="button" class="btn btn-primary active" id="profile_board_btn" 
+    onclick="document.location.href='/articles/profileBoard.html'">프로필 모음</button>
+    <button type="button" class="btn btn-primary active" id="free_board_btn" 
+    onclick="document.location.href='/articles/freeBoard.html'">자유 게시판</button>
+    <button type="button" class="btn btn-primary active" id="advice_board_btn" 
+    onclick="document.location.href='/articles/adviceBoard.html'">라떼 조언하기</button>
   </body>
 </html>
 
