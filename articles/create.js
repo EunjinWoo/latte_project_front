@@ -20,11 +20,17 @@ async function handleSubmit() {
       body: formData,
     });
 
-    console.log(response)
+    const response_json = await response.json()
+    // console.log(response_json)
 
     if (response.status == 200) {
         alert("게시글 작성 완료!")
-        // window.location.href = "/articles/freeBoard.html";
+
+        const url = new URL(window.location.href);
+        const article_url = new URL("./articles/detail.html", url.origin);
+        article_url.searchParams.append('id', response_json.id)
+
+        window.location.href = article_url;
     } else {
         // 400
         console.log("Bad Request. title과 content는 필수입력값입니다.")
