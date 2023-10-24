@@ -24,7 +24,11 @@ async function request() {
     }
 
     // 게시글 정보 띄워주기
-    document.getElementById("detail_category").innerText = response_json.category;
+    if (response_json.category == 1){
+        document.getElementById("detail_category").innerText = "자유 게시판";
+    } else {
+        document.getElementById("detail_category").innerText = "조언 구하기";
+    }
     document.getElementById("detail_title").innerText = response_json.title;
     if (response_json.image){
         document.getElementById("detail_image").src = `http://127.0.0.1:8000${response_json.image}/`;

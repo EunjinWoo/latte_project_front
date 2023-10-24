@@ -11,7 +11,11 @@
         <label>title : </label><input type="text" id="create_title"> <br>
         <label>content : </label><textarea id="create_content"></textarea> <br>
         <label>image : </label><input type="file" id="create_image"> <br>
-        <label>category : </label><input type="text" id="create_category"> <br>
+        <label>category : </label>
+        <select id="create_category">
+            <option value="1">자유 게시판</option>
+            <option value="2">조언 구하기</option>
+        </select>
         <button type="button" onclick="handleSubmit()">submit</button>
     </form>
 </body>
