@@ -9,7 +9,6 @@ async function loadAdviceArticles() {
         method : 'GET'
     })
     const response_json = await response.json()
-    // console.log(response_json[0].image)
 
     for (let i=0; i<response_json.length; i++){
         if (response_json[i].category === 2) {
@@ -18,6 +17,14 @@ async function loadAdviceArticles() {
 
             let post = document.createElement("ul");
             post.id = "board_list";
+
+            // 각 게시글의 id를 포함한 url 생성
+            const url = new URL(window.location.href);
+            const article_url = new URL("./articles/detail.html", url.origin);
+            article_url.searchParams.append('id', response_json[i].id)
+
+            let a = document.createElement("a");
+            a.href = article_url.href;
 
             let ids = ["advice_title","advice_author","advice_content","advice_created_at","advice_thumbnail","advice_category"]
 
@@ -36,23 +43,24 @@ async function loadAdviceArticles() {
                         img.src = `http://127.0.0.1:8000${post_data[j]}/`;
                     }
                     img.style.height = "200px";
-                    post.appendChild(img);
+                    a.appendChild(img);
                 }
                 else if (j === 3){
                     let li = document.createElement("li");
                     li.id = ids[j];
                     li.textContent = post_data[j].substr(0,10) + " " + post_data[j].substr(11).substr(0,5);
-                    post.appendChild(li);
+                    a.appendChild(li);
                 }
                 else {
                     let li = document.createElement("li");
                     li.id = ids[j];
                     li.textContent = post_data[j];
-                    post.appendChild(li);
+                    a.appendChild(li);
                 }
             }
 
             // 게시글 추가
+            post.appendChild(a);
             advice_board.appendChild(post);
         }
     }
