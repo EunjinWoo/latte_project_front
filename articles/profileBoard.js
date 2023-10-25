@@ -21,7 +21,7 @@ async function loadAdviceArticles() {
         // 각 프로필의 username를 포함한 url 생성 (response에서 user id값이 제공되지 않음.)
         const url = new URL(window.location.href);
         const profile_url = new URL("./users/mypage.html", url.origin);
-        profile_url.searchParams.append('username', response_json[i].username)
+        profile_url.searchParams.append('id', response_json[i].id)
 
         let a = document.createElement("a");
         a.href = profile_url.href;
