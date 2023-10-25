@@ -24,6 +24,13 @@ async function handleSignin() {
     body: formData,
   });
 
+  if (response.status === 201) {
+    alert("회원가입 완료");
+    window.location.href = "http://127.0.0.1:5500";
+  } else {
+    alert("회원가입 실패");
+  }
+
   console.log(response);
 }
 
@@ -60,4 +67,11 @@ async function handleLogin() {
       .join("")
   );
   localStorage.setItem("payload", jsonPayload);
+
+  if (response.status === 200) {
+    alert("로그인 완료");
+    window.location.href = "http://127.0.0.1:5500";
+  } else {
+    alert("로그인 실패");
+  }
 }

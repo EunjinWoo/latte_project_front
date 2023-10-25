@@ -9,11 +9,12 @@
   <body>
     <h1>홈페이지</h1>
     <div id="intro"></div>
-    <button type="button" id= logout_btn onclick="handleLogout()">로그아웃 하기</button>
-    <button type="button" class="btn btn-primary active" id="login_btn" 
+    <button type="button" id= "logout_btn" style="display: none;" onclick="handleLogout()">로그아웃 하기</button>
+    <button type="button"  class="btn btn-primary active" id="login_btn" 
 	  onclick="document.location.href='/users/login.html'">로그인 하기</button>
-    <button type="button" class="btn btn-primary active" id="signup_btn" 
+    <button type="button"  class="btn btn-primary active" id="signup_btn"
 	  onclick="document.location.href='/users/signup.html'">회원가입 하기</button>
+    <button type="button" style="display: none;" id="mypage_btn" onclick="handleMypage()">마이 프로필</button>
     <br>
     <button type="button" class="btn btn-primary active" id="profile_board_btn" 
     onclick="document.location.href='/articles/profileBoard.html'">프로필 모음</button>
@@ -23,6 +24,4 @@
     onclick="document.location.href='/articles/adviceBoard.html'">라떼 조언하기</button>
   </body>
 </html>
-
-
 
