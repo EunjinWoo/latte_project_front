@@ -64,24 +64,54 @@ async function loadAdviceArticles() {
                     let li = document.createElement("li");
                     li.id = ids[j];
                     li.textContent = post_data[j].substr(0,10) + " " + post_data[j].substr(11).substr(0,5);
-                    li.style.color = "gray";
-                    li.classList.add("list-group-item");
+                    li.style = "color: gray; display: flex; justify-content: flex-end;"
+                    li.classList.add("list-group-item", "fw-light", "fs-6");
                     a.appendChild(li);
                 }
                 else if (j == 0){ // title
                     let li = document.createElement("li");
                     li.id = ids[j];
                     li.textContent = post_data[j];
-                    li.style = "font-size: 20px; font-weight: bold; background-color: rgb(70,185,221, 0.1);";
-                    li.classList.add("list-group-item");
+                    li.style = "display: flex; padding-left: 20px;";
+                    li.classList.add("list-group-item", "fw-semibold", "fs-5");
                     a.appendChild(li);
                 }
-                else {
+                else if (j == 2){ // content
                     let li = document.createElement("li");
                     li.id = ids[j];
                     li.textContent = post_data[j];
-                    li.classList.add("list-group-item");
-                    a.appendChild(li);
+                    li.style = "display: flex; max-height: 120px; overflow: hidden; color: gray;"
+                    li.classList.add("fw-normal");
+
+                    let content_box = document.createElement("span");
+                    content_box.style = "max-height: 150px; overflow: clip; height:fit-content;";
+                    content_box.classList.add("list-group-item");
+
+                    content_box.appendChild(li);
+                    a.appendChild(content_box);
+                }
+                else { // username
+                    let div = document.createElement("div");
+                    div.style = "display: flex; height: fit-content; align-items: center;"
+                    div.classList.add("list-group-item");
+
+                    let img = document.createElement("img");
+                    let span = document.createElement("span");
+
+                    //profile_img
+                    img.src = `http://127.0.0.1:8000${response_json[i].user.profile_img}/`;
+                    img.classList.add("border", "border-1", "rounded-circle");
+                    img.style =  "height: 45px; width: 45px; object-fit: cover; margin-right: 10px;";
+
+                    //username
+                    span.id = ids[j];
+                    span.textContent = post_data[j];
+                    span.classList.add("fw-medium");
+
+                    div.appendChild(img);
+                    div.appendChild(span);
+
+                    a.prepend(div);
                 }
             }
 
