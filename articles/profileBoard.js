@@ -26,7 +26,6 @@ async function loadAdviceArticles() {
         post.style.textDecoration = "none";
         post.classList.add("row", "align-items-center");
         post.style.height = "250px";
-        post.style.marginTop = "20px";
 
         let div1 = document.createElement("div");
         div1.id = "profile_col_img";
@@ -41,7 +40,7 @@ async function loadAdviceArticles() {
         div2.style.color = "black";
 
         let hr = document.createElement("hr");
-        hr.style.color = "black"
+        hr.style.color = "black";
         hr.style.marginTop = "20px";
 
         let ids = ["profile_username","profile_profile_image","profile_age"]
@@ -50,7 +49,7 @@ async function loadAdviceArticles() {
                 
         //게시글 생성
         for(let j=0;j<ids.length;j++){
-            if (j === 1){
+            if (j === 1){ // profile_img
                 let img = document.createElement("img");
                 img.id = ids[j];
                 if (post_data[j] === null){
@@ -66,19 +65,18 @@ async function loadAdviceArticles() {
 
                 div1.appendChild(img);
             }
-            else if (j == 0){
+            else if (j == 0){ //username
                 let p = document.createElement("p");
                 p.id = ids[j];
                 p.textContent = post_data[j];
-                p.style.fontWeight = "bold";
-                p.style.fontSize = "xxx-large";
+                p.classList.add("fw-semibold", "fs-2");
                 div2.appendChild(p);
             }
-            else {
+            else { //age
                 let p = document.createElement("p");
                 p.id = ids[j];
                 p.textContent = "나이 : " + post_data[j];
-                p.style.fontSize = "x-large";
+                p.classList.add("fw-normal", "fs-5");
                 div2.appendChild(p);
             }
         }
