@@ -33,13 +33,13 @@ async function loadAdviceArticles() {
             a.classList.add("list-group");
             a.style.textDecoration = "none";
 
-            let ids = ["advice_title","advice_author","advice_content","advice_created_at","advice_thumbnail","advice_category"]
+            let ids = ["advice_title","advice_author","advice_content","advice_thumbnail","advice_created_at"]
 
-            let post_data = [response_json[i].title, response_json[i].user.username, response_json[i].content, response_json[i].created_at, response_json[i].image, response_json[i].category];
+            let post_data = [response_json[i].title, response_json[i].user.username, response_json[i].content, response_json[i].image, response_json[i].created_at];
                     
             //게시글 생성
             for(let j=0;j<ids.length;j++){
-                if (j === 4){
+                if (j === 3){ //thumbnail
                     let img = document.createElement("img");
                     img.id = ids[j];
                     if (post_data[j] === null){
@@ -60,10 +60,11 @@ async function loadAdviceArticles() {
                     img_box.appendChild(img);
                     a.appendChild(img_box);
                 }
-                else if (j === 3){
+                else if (j === 4){ // created_at
                     let li = document.createElement("li");
                     li.id = ids[j];
                     li.textContent = post_data[j].substr(0,10) + " " + post_data[j].substr(11).substr(0,5);
+                    li.style.color = "gray";
                     li.classList.add("list-group-item");
                     a.appendChild(li);
                 }
