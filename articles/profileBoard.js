@@ -13,18 +13,36 @@ async function loadAdviceArticles() {
 
     for (let i=0; i<response_json.length; i++){
         // 게시글 출력 공간
-        let advice_board = document.querySelector("#profile_board");
-
-        let post = document.createElement("ul");
-        post.id = "board_list";
+        let profile_board = document.querySelector("#profile_board");
 
         // 각 프로필의 username를 포함한 url 생성 (response에서 user id값이 제공되지 않음.)
         const url = new URL(window.location.href);
         const profile_url = new URL("./users/mypage.html", url.origin);
         profile_url.searchParams.append('id', response_json[i].id)
 
-        let a = document.createElement("a");
-        a.href = profile_url.href;
+        let post = document.createElement("a");
+        post.id = "profile_post";
+        post.href = profile_url.href;
+        post.style.textDecoration = "none";
+        post.classList.add("row", "align-items-center");
+        post.style.height = "250px";
+        post.style.marginTop = "20px";
+
+        let div1 = document.createElement("div");
+        div1.id = "profile_col_img";
+        div1.classList.add("text-center");
+        div1.style.height = "80%";
+        div1.style.width = "225px";
+
+        let div2 = document.createElement("div");
+        div2.id = "profile_col_text";
+        div2.classList.add("col-8");
+        div2.style.padding = "40px";
+        div2.style.color = "black";
+
+        let hr = document.createElement("hr");
+        hr.style.color = "black"
+        hr.style.marginTop = "20px";
 
         let ids = ["profile_username","profile_profile_image","profile_age"]
 
@@ -41,20 +59,35 @@ async function loadAdviceArticles() {
                 else {
                     img.src = `http://127.0.0.1:8000${post_data[j]}/`;
                 }
-                img.style.height = "200px";
-                a.appendChild(img);
+                img.style.width = "100%";
+                img.style.height = "100%";
+                img.style.objectFit = "cover";
+                img.classList.add("shadow", "rounded-circle");
+
+                div1.appendChild(img);
+            }
+            else if (j == 0){
+                let p = document.createElement("p");
+                p.id = ids[j];
+                p.textContent = post_data[j];
+                p.style.fontWeight = "bold";
+                p.style.fontSize = "xxx-large";
+                div2.appendChild(p);
             }
             else {
-                let li = document.createElement("li");
-                li.id = ids[j];
-                li.textContent = post_data[j];
-                a.appendChild(li);
+                let p = document.createElement("p");
+                p.id = ids[j];
+                p.textContent = "나이 : " + post_data[j];
+                p.style.fontSize = "x-large";
+                div2.appendChild(p);
             }
         }
 
         // 게시글 추가
-        post.appendChild(a);
-        advice_board.appendChild(post);
+        post.appendChild(div1);
+        post.appendChild(div2);
+        post.appendChild(hr);
+        profile_board.appendChild(post);
     }
 
 }

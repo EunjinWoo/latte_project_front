@@ -36,3 +36,15 @@ async function handleSubmit() {
         console.log("Bad Request. title과 content는 필수입력값입니다.")
     }
 }
+
+async function handleArticleImagePreview(input) {
+    console.log(input.files)
+    if (input.files && input.files.length > 0) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById("preview_image").src = e.target.result;
+            // console.log(e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
