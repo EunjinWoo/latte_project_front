@@ -11,7 +11,7 @@
     <form>
       <input type="text" name="username" id="username" placeholder="username" /><br>
       <input type="number" name="age" id="age" placeholder="age" />
-      <br />프로필 사진 첨부하기
+      <br />프로필 사진 첨부하기<br>
       <input
         type="file"
         name="profile_img"
@@ -27,5 +27,12 @@
       <br />
       <button type="button" onclick="handleSignup()">회원가입하기</button>
     </form>
+    <h3>프로필 사진 나이 변환하기</h3>
+    <input type="file" id="imageInput" accept="image/*">
+    <label for="ageInput">나이를 입력하세요:</label>
+    <input type="number" id="ageInput">
+    <button id="editButton">얼굴 특성 편집</button>
+    <a id="downloadLink" style="display: none;"></a>
+    <img id="resultImage" style="max-width: 300px; max-height: 300px;">
   </body>
 </html>
