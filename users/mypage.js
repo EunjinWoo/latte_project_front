@@ -53,6 +53,10 @@ async function requestId() {
 }
 
 async function requestUser() {
+    const payload = localStorage.getItem("payload");
+    const payload_parse = JSON.parse(payload);
+    console.log(payload_parse.user_id);
+
     const url = new URL(window.location.href).searchParams;
     const id = url.get("id");
     console.log(id)
@@ -65,4 +69,18 @@ async function requestUser() {
     document.getElementById("profile_img").src = `http://127.0.0.1:8000${response_json.profile_img}/`;
     document.getElementById("username").innerText = response_json.username;
     document.getElementById("age").innerText = response_json.age;
+
+    if (payload_parse.user_id == response_json.id) {
+        document.getElementById("profile_update_btn").style.display = "block";
+    }
+}
+
+function handleUpdateProfile() {
+    const url = new URL(window.location.href);
+    const id = url.searchParams.get("id");
+
+    const update_url = new URL("./users/profileUpdate.html", url.origin);
+    update_url.searchParams.append("id", id)
+
+    window.location.href = update_url
 }
