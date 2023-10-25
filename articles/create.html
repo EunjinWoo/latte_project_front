@@ -11,17 +11,6 @@
     <script src="create.js"></script>
 </head>
 <body>
-    <!-- <form>
-        <label>title : </label><input type="text" id="create_title"> <br>
-        <label>content : </label><textarea id="create_content"></textarea> <br>
-        <label>image : </label><input type="file" id="create_image"> <br>
-        <label>category : </label>
-        <select id="create_category">
-            <option value="1">자유 게시판</option>
-            <option value="2">조언 구하기</option>
-        </select>
-        <button type="button" onclick="handleSubmit()">submit</button>
-    </form> -->
     <form>
         <div style="
             height: 80vh; padding-left: 20vh; padding-right: 20vh;
@@ -32,7 +21,7 @@
             <div class="card text-center" style="height: 100%">
                 <div class="card-header" style="height: 60px; display: flex; align-items: center; justify-content: space-between;">
                     <div class="input-group" style="width: 90%;">
-                        <span class="input-group-text"><b>Title : </b></span>
+                        <span class="input-group-text fw-medium">Title </span>
                         <input type="text" id="create_title" class="form-control">
                     </div>
                     <select id="create_category" class="form-select" style="width: 10%;">
@@ -42,11 +31,11 @@
                 </div>
                 <div class="card-body container" style="height: calc(100% - 120px);">
                     <div class="row" style="height: 100%;">
-                        <div class="col" style="border-right: 1px solid gray; height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <div class="col" style="border-right: 1px solid lightgray; height: 100%; display: flex; align-items: center; justify-content: center;">
                             <img src="/media/defaultThumbnail.jpeg" style="max-height: 100%; width: 100%; object-fit: contain;" id="preview_image">
                         </div>
                         <div class="col">
-                            <textarea id="create_content" style="height: 100%; width: 100%;"></textarea>
+                            <textarea id="create_content" class="border rounded" style="height: 100%; width: 100%; resize: none;"></textarea>
                         </div>
                     </div>
                 </div>
