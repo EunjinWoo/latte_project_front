@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       changed_image_url = response_json['changed_image_url'];
     } else { 
+      document.getElementById("imageChangeError").style.opacity = "100%";
       document.getElementById("imageChangeError").innerText = response_json['error_msg'].split("-").slice(-1);
     }
 
@@ -54,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
   signupButton.addEventListener('click', async function () {
     if (changed_image_url === ''){
       // 아직 프로필 이미지 안 바꾼 경우 다른 나이로.
-      document.getElementById("signupFailedError").innerText = "프로필 이미지 얼굴변환 먼저 해주세요.";
+      document.getElementById("signupFailedError").style.opacity = "100%";
+      document.getElementById("signupFailedError").innerText = "프로필 이미지 변환은 필수 사항입니다.";
     }
     else { // 프로필 이미지 나이 바꿔서 돌린 경우. 
       fetch(`http://127.0.0.1:8000${changed_image_url}`) // 이미지의 URL을 지정하세요.
@@ -93,8 +95,21 @@ document.addEventListener('DOMContentLoaded', function () {
       alert("회원가입 완료");
       window.location.href = "http://127.0.0.1:5500";
     } else {
+      document.getElementById("signupFailedError").style.opacity = "100%";
       document.getElementById("signupFailedError").innerText = "회원가입 실패";
     }
   }
   
 });
+
+async function handleputImagePreview(input) {
+  console.log(input.files)
+  if (input.files && input.files.length > 0) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          document.getElementById("putImage").src = e.target.result;
+          // console.log(e.target.result)
+      };
+      reader.readAsDataURL(input.files[0]);
+  }
+}
