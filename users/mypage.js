@@ -7,43 +7,46 @@ window.onload = () => {
 }
 
 async function loadMyArticles() {
+    // 기존 게시글을 삭제
+    const myArticleBoard = document.querySelector("#my_articles");
+    while (myArticleBoard.firstChild) {
+        myArticleBoard.removeChild(myArticleBoard.firstChild);
+    }
+
     const url = new URL(window.location.href).searchParams;
     const id = url.get("id");
 
-    const response = await fetch ("http://127.0.0.1:8000/articles/", {method: "GET"})
+    const response = await fetch("http://127.0.0.1:8000/articles/", { method: "GET" });
+    const response_json = await response.json();
 
-    const response_json = await response.json()
-    console.log(response_json[1].user.id)
-
-    for (let i=0; i<response_json.length; i++){
+    for (let i = 0; i < response_json.length; i++) {
         if (response_json[i].user.id == id) {
             let my_article_board = document.querySelector("#my_articles");
 
             let post = document.createElement("ul");
-            post.id = "board_list"
+            post.id = "board_list";
 
             const url = new URL(window.location.href);
             const article_url = new URL("./articles/detail.html", url.origin);
-            article_url.searchParams.append('id', response_json[i].id)
+            article_url.searchParams.append('id', response_json[i].id);
 
             let a = document.createElement("a");
             a.href = article_url.href;
 
-            let ids = ["my_title","my_content","my_category"]
+            let ids = ["my_title", "my_content", "my_category"];
 
             let post_data = [response_json[i].title, response_json[i].content, response_json[i].category];
-            
-            for(let j=0;j<ids.length;j++){
+
+            for (let j = 0; j < ids.length; j++) {
                 let li = document.createElement("li");
                 li.id = ids[j];
                 li.textContent = post_data[j];
                 a.appendChild(li);
-        }
+            }
             post.appendChild(a);
             my_article_board.appendChild(post);
         }
     }
-
 }
 
 async function requestId() {

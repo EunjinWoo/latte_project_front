@@ -6,21 +6,30 @@
     <title>MyPage</title>
     <script src="mypage.js"></script>
   </head>
+  <style>
+
+  </style>
   <body>
-    <h1>My Page</h1>
-    <div>
-      <img id="profile_img" style="height: 200px"> <br>
-      <span>username : </span><span id="username"></span> <br>
-      <span>age : </span><span id="age"></span> <br>
-      <button id="profile_update_btn" style="display: none;" onclick="handleUpdateProfile()">프로필 수정</button> <br>
+    <h1 class="headline">My Page</h1>
+    <div class="profile-container">
+      <h3>회원정보</h3>
+      <div class="profile-details">
+        <img id="profile_img" style="height: 200px"> <br>
+        <span>username : </span><span id="username"></span> <br>
+        <span>age : </span><span id="age"></span> <br>
+        <button id="profile_update_btn" style="display: none;" onclick="handleUpdateProfile()">프로필 수정</button> <br>
+      </div>
     </div>
-    <div><h3>내가 쓴 게시글</h3></div>
-    <div id="my_articles">
-      <ul id="board_list">
-        <li id="my_title">제목</li>
-        <li id="my_content"> content</li>
-        <li id="my_category"> 카테고리</li>
-    </ul>
+    <div class="articles-container">
+      <h3>작성한 게시글</h3>
+      <div class="articles-details" id="my_articles">
+        <ul class="eacharticle" id="board_list">
+          <li id="my_title">제목</li>
+          <li id="my_content"> content</li>
+          <li id="my_category">카테고리</li>
+        </ul>
+      </div>
+    </div>
     </div>
   </body>
 </html>
