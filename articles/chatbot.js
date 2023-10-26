@@ -2,7 +2,7 @@
 const chatMessages = document.querySelector('#chat-messages');
 const userInput = document.querySelector('#user-input input');
 const sendButton = document.querySelector('#user-input button');
-const apiKey = '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';
+const apiKey = '';
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions'
 
 nav();

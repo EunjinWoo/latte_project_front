@@ -8,7 +8,7 @@ async function request() {
     const url = new URL(window.location.href).searchParams;
     const id = url.get('id');
 
-    const response = await fetch(`http://127.0.0.1:8000/users/${id}/`, {
+    const response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/users/${id}/`, {
         method : 'GET'
     })
     const response_json = await response.json()
@@ -29,7 +29,7 @@ async function handleSubmit() {
     formData.append("age", document.getElementById("update_age").value);
     formData.append("profile_img", document.getElementById("update_image").files[0])
 
-    const response = await fetch(`http://127.0.0.1:8000/users/${id}/`, {
+    const response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/users/${id}/`, {
         method: "PUT",
         headers: {
             "Authorization" : "Bearer " + localStorage.getItem("access")
@@ -45,7 +45,7 @@ async function handleSubmit() {
         const profile_url = new URL("./users/profileUpdate.html", url.origin);
         profile_url.searchParams.append("id", response_json.id)
 
-        window.location.href = "http://127.0.0.1:5500/";
+        window.location.href = "/";
     } else{
         console.log("Bad Request")
     }

@@ -22,7 +22,7 @@ async function handleLogin() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    const response = await fetch("http://127.0.0.1:8000/users/api/token/", {
+    const response = await fetch("ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/users/api/token/", {
         headers: {
         "content-type": "application/json",
         },
@@ -53,7 +53,7 @@ async function handleLogin() {
     localStorage.setItem("payload", jsonPayload);
 
     if (response.status === 200) {
-        window.location.href = "http://127.0.0.1:5500";
+        window.location.href = "/";
     } else {
         alert("로그인 실패");
     }

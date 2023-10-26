@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     formData.append('target', age);
 
     // DB의 Temp_Profile_Image에 변환된 프로필 이미지 저장. (이 url이 changed_image_url)
-    const response = await fetch("http://127.0.0.1:8000/users/change_profile_image/", {
+    const response = await fetch("ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/users/change_profile_image/", {
       method: "POST",
       body: formData,
     });
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (response.status === 200){
       // 변환된 결과 이미지 화면에 출력
-      document.getElementById("resultImage").src = `http://127.0.0.1:8000${response_json['changed_image_url']}`;
+      document.getElementById("resultImage").src = `ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com${response_json['changed_image_url']}`;
 
       downloadLink.href = 'data:image/jpeg;base64,' + response_json['image_data'];
       downloadLink.download = 'edited_image.jpg';
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById("signupFailedError").innerText = "프로필 이미지 변환은 필수 사항입니다.";
     }
     else { // 프로필 이미지 나이 바꿔서 돌린 경우. 
-      fetch(`http://127.0.0.1:8000${changed_image_url}`) // 이미지의 URL을 지정하세요.
+      fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com${changed_image_url}`) // 이미지의 URL을 지정하세요.
       .then(response => response.blob())
       .then(blob => {
         // Blob 객체를 얻었습니다.
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     formData.append("profile_img", file)
     formData.append("password", document.getElementById("password").value);
   
-    const response = await fetch("http://127.0.0.1:8000/users/signup/", {
+    const response = await fetch("ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/users/signup/", {
       headers: {},
       method: "POST",
       body: formData,

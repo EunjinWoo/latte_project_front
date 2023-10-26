@@ -1,6 +1,6 @@
 window.onload = () => {
     nav();
-    
+
     request();
 }
 
@@ -10,7 +10,7 @@ async function request() {
     const url = new URL(window.location.href).searchParams;
     const id = url.get('id');
 
-    const response = await fetch(`http://127.0.0.1:8000/articles/${id}/`, {
+    const response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/articles/${id}/`, {
         method : 'GET'
     })
     const response_json = await response.json()
@@ -21,7 +21,7 @@ async function request() {
     document.getElementById("update_content").value = response_json.content;
     document.getElementById("update_category").value = response_json.category;
     if (response_json.image){
-        document.getElementById("previous_image").src = `http://127.0.0.1:8000${response_json.image}/`;
+        document.getElementById("previous_image").src = `ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com${response_json.image}/`;
     }
     else {
         document.getElementById("previous_image").src = "/media/defaultThumbnail.jpeg";
@@ -38,7 +38,7 @@ function deleteArticleImage() {
             handleArticleImagePreview(document.getElementById("update_image"));
         } else { // img_delete을 짝수 번 누르고, 업데이트하려 했던 파일이 없는 경우. (기존 아티클의 파일을 출력해야 함.)
             if (previous_img_src){
-                document.getElementById("previous_image").src = `http://127.0.0.1:8000${previous_img_src}/`;
+                document.getElementById("previous_image").src = `ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com${previous_img_src}/`;
             }
             else {
                 document.getElementById("previous_image").src = "/media/defaultThumbnail.jpeg";
@@ -67,7 +67,7 @@ async function handleSubmit() {
     } // 삭제 안 누르면 삭제 안되고 그대로 유지.
     formData.append("category", document.getElementById("update_category").value);
 
-    const response = await fetch(`http://127.0.0.1:8000/articles/${id}/`, {
+    const response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/articles/${id}/`, {
       method: "PUT",
       headers: {
         "Authorization" : "Bearer " + localStorage.getItem("access")

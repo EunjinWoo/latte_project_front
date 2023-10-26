@@ -16,7 +16,7 @@ async function loadMyArticles() {
     const url = new URL(window.location.href).searchParams;
     const id = url.get("id");
 
-    const response = await fetch("http://127.0.0.1:8000/articles/", { method: "GET" });
+    const response = await fetch("ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/articles/", { method: "GET" });
     const response_json = await response.json();
 
     for (let i = 0; i < response_json.length; i++) {
@@ -63,13 +63,13 @@ async function requestUser() {
     const url = new URL(window.location.href).searchParams;
     const id = url.get("id");
     console.log(id)
-    const response = await fetch (`http://127.0.0.1:8000/users/${id}/`, {
+    const response = await fetch (`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/users/${id}/`, {
         method : "GET"
     })
     const response_json = await response.json()
     console.log(response_json)
 
-    document.getElementById("profile_img").src = `http://127.0.0.1:8000${response_json.profile_img}/`;
+    document.getElementById("profile_img").src = `ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com${response_json.profile_img}/`;
     document.getElementById("username").innerText = response_json.username;
     document.getElementById("age").innerText = response_json.age;
 

@@ -8,7 +8,7 @@ async function request() {
     const url = new URL(window.location.href).searchParams;
     const id = url.get('id');
 
-    const response = await fetch(`http://127.0.0.1:8000/articles/${id}/`, {
+    const response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/articles/${id}/`, {
         method : 'GET'
     })
     const response_json = await response.json()
@@ -18,7 +18,7 @@ async function request() {
     const payload_parse = JSON.parse(payload)
     const login_user_id = payload_parse.user_id;
 
-    const user_response = await fetch(`http://127.0.0.1:8000/users/${login_user_id}/`, {
+    const user_response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/users/${login_user_id}/`, {
         method : 'GET'
     })
     const user_response_json = await user_response.json()
@@ -49,7 +49,7 @@ async function request() {
     document.getElementById("detail_title").innerText = response_json.title;
     // article_image
     if (response_json.image){
-        document.getElementById("detail_image").src = `http://127.0.0.1:8000${response_json.image}/`;
+        document.getElementById("detail_image").src = `ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com${response_json.image}/`;
     }
     else {
         document.getElementById("detail_image").src = "/media/defaultThumbnail.jpeg";
@@ -60,7 +60,7 @@ async function request() {
     // user
     document.getElementById("detail_author").innerText = response_json.user.username;
     if (response_json.user.profile_img){
-        document.getElementById("detail_author_profile").src = `http://127.0.0.1:8000${response_json.user.profile_img}/`;
+        document.getElementById("detail_author_profile").src = `ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com${response_json.user.profile_img}/`;
     }
     
     // 댓글 띄우기
@@ -101,7 +101,7 @@ async function request() {
                 let img = document.createElement("img");
                 img.id = ids[j];
                 img.classList.add("border", "border-1", "rounded-circle");
-                img.src = `http://127.0.0.1:8000${comment_data[0]}/`;
+                img.src = `ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com${comment_data[0]}/`;
                 img.style =  "height: 30px; width: 30px; object-fit: cover; margin-right: 8px;";
                 commentUser.appendChild(img);
             }
@@ -158,7 +158,7 @@ async function handleCreateComment() {
     const content = document.getElementById("detail_create_comment").value
     console.log(content)
 
-    const response = await fetch(`http://127.0.0.1:8000/articles/${id}/comment/`, {
+    const response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/articles/${id}/comment/`, {
         headers:{
             "Authorization" : "Bearer " + localStorage.getItem("access"),
             'content-type':'application/json',
@@ -225,7 +225,7 @@ async function handleUpdateComment(i, comment_id) {
 }
 
 async function updateComment(content, comment_id) {
-    const response = await fetch(`http://127.0.0.1:8000/articles/comment/${comment_id}/`, {
+    const response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/articles/comment/${comment_id}/`, {
         headers:{
             "Authorization" : "Bearer " + localStorage.getItem("access"),
             'content-type':'application/json',
@@ -245,7 +245,7 @@ async function updateComment(content, comment_id) {
 }
 
 async function handleDeleteComment(comment_id) {
-    const response = await fetch(`http://127.0.0.1:8000/articles/comment/${comment_id}/`, {
+    const response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/articles/comment/${comment_id}/`, {
         headers:{
             "Authorization" : "Bearer " + localStorage.getItem("access"),
         },

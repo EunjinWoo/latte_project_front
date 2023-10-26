@@ -1,8 +1,6 @@
-console.log("로딩되었습니다.");
-
 window.onload = () => {
   nav();
-  
+
   requestUser();
 
 };
@@ -21,7 +19,7 @@ async function requestUser() {
     const payload_parse = JSON.parse(payload);
     const id = payload_parse.user_id;
 
-    const response = await fetch(`http://127.0.0.1:8000/users/${id}/`, {
+    const response = await fetch(`ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/users/${id}/`, {
       method: "GET",
     });
 

@@ -12,7 +12,7 @@ async function handleSubmit() {
     }
     formData.append("category", document.getElementById("create_category").value);
 
-    const response = await fetch("http://127.0.0.1:8000/articles/", {
+    const response = await fetch("ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/articles/", {
       method: "POST",
       headers: {
         "Authorization" : "Bearer " + localStorage.getItem("access")

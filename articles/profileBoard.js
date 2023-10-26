@@ -5,7 +5,7 @@ window.onload = () => {
 }
 
 async function loadAdviceArticles() {
-    const response = await fetch('http://127.0.0.1:8000/users/', {
+    const response = await fetch('ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com/users/', {
         method : 'GET'
     })
     const response_json = await response.json()
@@ -56,7 +56,7 @@ async function loadAdviceArticles() {
                     img.src = "/media/defaultProfile.png";
                 } 
                 else {
-                    img.src = `http://127.0.0.1:8000${post_data[j]}/`;
+                    img.src = `ec2-13-209-29-12.ap-northeast-2.compute.amazonaws.com${post_data[j]}/`;
                 }
                 img.style.width = "100%";
                 img.style.height = "100%";
