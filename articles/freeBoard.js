@@ -91,7 +91,7 @@ async function loadAdviceArticles() {
                 }
                 else { // username
                     let div = document.createElement("div");
-                    div.style = "display: flex; height: fit-content; align-items: center;"
+                    div.style = "display: flex; height: fit-content; align-items: center; background-color: rgb(211,211,211,0.2);"
                     div.classList.add("list-group-item");
 
                     let img = document.createElement("img");
