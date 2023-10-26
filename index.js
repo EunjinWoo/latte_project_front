@@ -5,14 +5,6 @@ window.onload = () => {
 
 };
 
-function handleLogout() {
-  localStorage.removeItem("access");
-  localStorage.removeItem("refresh");
-  localStorage.removeItem("payload");
-  alert("로그아웃 완료");
-  window.location.href = "http://127.0.0.1:5500";
-}
-
 async function requestUser() {
   try {
     const payload = localStorage.getItem("payload");
@@ -51,17 +43,4 @@ async function requestUser() {
     // Handle any unexpected errors.
     console.error("An error occurred:", error);
   }
-}
-
-
-function handleMypage() {
-  const payload = localStorage.getItem("payload");
-  const payload_parse = JSON.parse(payload);
-  const id = payload_parse.user_id;
-
-  const url = new URL(window.location.href);
-  const mypage_url = new URL("./users/mypage.html", url.origin);
-  mypage_url.searchParams.append("id", id)
-
-  window.location.href = mypage_url
 }
