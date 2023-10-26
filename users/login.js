@@ -1,5 +1,20 @@
 window.onload = () => {
     console.log("로딩되었음");
+
+    // enter key로 로그인할 수 있게 설정.
+    const userInput_username = document.querySelector('#username');
+    const userInput_password = document.querySelector('#password');
+
+    userInput_username.addEventListener('keyup', (event) => { 
+        if (event.key === 'Enter') {
+            handleLogin();
+        }
+    });
+    userInput_password.addEventListener('keyup', (event) => { 
+        if (event.key === 'Enter') {
+            handleLogin();
+        }
+    });
 };
 
   
@@ -44,4 +59,3 @@ async function handleLogin() {
         alert("로그인 실패");
     }
 }
-  
