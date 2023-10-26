@@ -4,10 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyPage</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
     <script src="mypage.js"></script>
   </head>
   <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 20px;
+      }
 
+      .profile-details {
+        text-align: center;
+      }
+
+      .headline {
+        text-align: center;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .profile-container {
+        text-align: center;
+        border: 1px solid lightgray;
+        padding: 10px;
+        width: 48%; /* 왼쪽 컨테이너 너비 설정 */
+      }
+
+      .articles-container {
+        border: 1px solid lightgray;
+        padding: 10px;
+        width: 48%; /* 오른쪽 컨테이너 너비 설정 */
+      }
+
+      #profile_img {
+        border: 1px solid gray;
+        border-radius: 50%;
+        height: 200px;
+      }
   </style>
   <body>
     <h1 class="headline">My Page</h1>
@@ -17,7 +62,9 @@
         <img id="profile_img" style="height: 200px"> <br>
         <span>username : </span><span id="username"></span> <br>
         <span>age : </span><span id="age"></span> <br>
-        <button id="profile_update_btn" style="display: none;" onclick="handleUpdateProfile()">프로필 수정</button> <br>
+        <div style="display: flex;">
+          <button id="profile_update_btn" class="btn btn-outline-secondary" style="display: none;" onclick="handleUpdateProfile()">프로필 수정</button> <br>
+        </div>
       </div>
     </div>
     <div class="articles-container">

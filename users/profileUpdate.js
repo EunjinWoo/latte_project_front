@@ -45,9 +45,21 @@ async function handleSubmit() {
         const profile_url = new URL("./users/profileUpdate.html", url.origin);
         profile_url.searchParams.append("id", response_json.id)
 
-        window.location.href = profile_url;
+        window.location.href = "http://127.0.0.1:5500/";
     } else{
         console.log("Bad Request")
     }
     
 }
+
+async function handleputImagePreview(input) {
+    console.log(input.files)
+    if (input.files && input.files.length > 0) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById("putImage").src = e.target.result;
+            // console.log(e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
