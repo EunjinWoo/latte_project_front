@@ -1,5 +1,5 @@
 window.onload = () => {
-    console.log("hi")
+    nav();
 
     loadAdviceArticles();
 }

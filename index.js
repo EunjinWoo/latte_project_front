@@ -1,7 +1,9 @@
 console.log("로딩되었습니다.");
 
 window.onload = () => {
-  requestUser()
+  nav();
+  
+  requestUser();
 
 };
 

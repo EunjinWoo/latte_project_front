@@ -1,6 +1,6 @@
 window.onload = () => {
-    console.log(document.getElementById("update_title"));
-
+    nav();
+    
     request();
 }
 

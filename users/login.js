@@ -1,5 +1,5 @@
 window.onload = () => {
-    console.log("로딩되었음");
+    nav();
 
     // enter key로 로그인할 수 있게 설정.
     const userInput_username = document.querySelector('#username');
@@ -53,7 +53,6 @@ async function handleLogin() {
     localStorage.setItem("payload", jsonPayload);
 
     if (response.status === 200) {
-        alert("로그인 완료");
         window.location.href = "http://127.0.0.1:5500";
     } else {
         alert("로그인 실패");

@@ -2,18 +2,77 @@
 <html>
 <head>
     <title>Image Generator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <h1>이미지 생성</h1>
-    <form id="imageForm">
-        <label for="prompt">Prompt:</label>
-        <input type="text" id="prompt" name="prompt" value="dog by gogh"><br><br>
-        <label for="negative_prompt">Negative Prompt:</label>
-        <input type="text" id="negative_prompt" name="negative_prompt" value="ugly face,low quality,low contrast,draft,amateur,cut off,cropped,frame"><br><br>
-        <button type="button" id="generateButton">이미지 생성</button>
-    </form>
-    <img id="resultImage" style="display: none;">
-    <a id="downloadLink" style="display: none;" download="generated_image.jpg">이미지 다운로드</a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding-right: 10px; padding-left: 10px;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/index.html">
+            <img src="/media/Logo.png" style="height: 3rem;">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <span class="navbar-text me-auto mb-2 mb-lg-0">
+                <!-- Navbar text with an inline element -->
+            </span>
+            <ul class="navbar-nav">
+                <li class="nav-item" id="nav_ai_consult">
+                    <a class="nav-link" href="/articles/chatbot.html">AI 상담하기</a>
+                </li>
+                <li class="nav-item" id="nav_ai_imggen">
+                    <a class="nav-link" href="/articles/generateImage.html">이미지 생성하기</a>
+                </li>
+                <li class="nav-item" id="nav_login">
+                    <a class="nav-link" href="/users/login.html">Login</a>
+                </li>
+                <li class="nav-item" id="nav_signup">
+                    <a class="nav-link" href="/users/signup.html">Signup</a>
+                </li>
+                <li class="nav-item" id="nav_create">
+                    <a class="nav-link" href="/articles/create.html">글 작성하기</a>
+                </li>
+                <li class="nav-item" id="nav_mypage">
+                    <a class="nav-link" onclick="handleMypage()">My page</a>
+                </li>
+                <li class="nav-item" id="nav_logout">
+                    <a class="nav-link" onclick="handleLogout()">Logout</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div style="
+      height: 85vh; width: 80vh; justify-content: center; 
+      align-items: center; position: absolute; margin-top: 3vh;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);"
+      class="card text-center border border-subtle";
+      >
+        <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div  style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; width: 100%;">
+            <form id="imageForm">
+                <div class="input-group input-group-lg mb-3" style="width: 70vh; margin-top: 0.5rem;">
+                    <span class="input-group-text" id="basic-addon1">prompt</span>
+                    <input type="text" class="form-control" value="dog by gogh" id="prompt" name="prompt">
+                </div>
+                <div class="input-group input-group-lg mb-3" style="width: 70vh;">
+                    <span class="input-group-text" id="basic-addon1">negative_prompt</span>
+                    <input type="text" class="form-control" value="ugly face,low quality,low contrast,draft,amateur,cut off,cropped,fram" id="negative_prompt" name="negative_prompt">
+                </div>
+              <img id="resultImage" style="display: none; margin-bottom: 1.5rem; margin-top: 1.5rem; height: 50vh;" class="rounded mx-auto d-block">
+            <a id="downloadLink" style="display: none;" download="generated_image.jpg" class="btn btn-outline-secondary fs-6 fw-light">이미지 다운로드</a>
+            </form>
+            <button type="button" id="generateButton" class="btn btn-secondary fs-6 fw-light" style="margin-bottom: 1rem;">이미지 생성</button>
+          </div>
+        </div>
+    </div>
+
     <script src="generateImage.js"></script>
+    <script src="../nav.js"></script>
 </body>
 </html>

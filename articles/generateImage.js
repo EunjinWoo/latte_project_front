@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+    nav();
+
     const imageForm = document.getElementById('imageForm');
     const generateButton = document.getElementById('generateButton');
     const resultImage = document.getElementById('resultImage');

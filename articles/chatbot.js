@@ -2,10 +2,10 @@
 const chatMessages = document.querySelector('#chat-messages');
 const userInput = document.querySelector('#user-input input');
 const sendButton = document.querySelector('#user-input button');
-const apiKey = '';
+const apiKey = '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';
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions'
 
-
+nav();
 
 
 function addMessage(sender, message) {
@@ -24,7 +24,7 @@ async function fetchAIResponse(prompt) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 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`
+            'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",  
