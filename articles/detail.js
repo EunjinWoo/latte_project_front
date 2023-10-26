@@ -1,5 +1,5 @@
 window.onload = () => {
-    console.log("window loaded");
+    nav();
 
     request();
 }
@@ -172,7 +172,6 @@ async function handleCreateComment() {
     const response_json = await response.json()
     console.log(response.status)
     if (response.status === 200) {
-        alert('작성 완료');
         window.location.href = window.location.href;
     } else {
         document.getElementById("detail_create_comment_failed").innerText = "  작성 실패. 내용을 입력해주세요."
@@ -254,7 +253,6 @@ async function handleDeleteComment(comment_id) {
     })
 
     if (response.status === 204) {
-        alert('삭제 완료');
         window.location.href = window.location.href;
     } else {
         alert('삭제 실패');

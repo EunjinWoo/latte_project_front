@@ -7,7 +7,6 @@ function nav() {
         document.getElementById("nav_signup").style.display = "none";
     }
     else {
-        document.getElementById("nav_ai_consult").style.display = "none";
         document.getElementById("nav_create").style.display = "none";
         document.getElementById("nav_mypage").style.display = "none";
         document.getElementById("nav_logout").style.display = "none";

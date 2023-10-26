@@ -1,5 +1,5 @@
 window.onload = () => {
-    console.log("업데이트 자바스크립트");
+    nav();
 
     request();
 }

@@ -1,5 +1,5 @@
 window.onload = () => {
-    console.log("로딩되었음");
+    nav();
 };  
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const age = ageInput.value;
     
     if (!imageFile || !age) {
-        alert('이미지와 나이를 입력하세요.');
+      document.getElementById("imageChangeError").style.opacity = "100%";
+      document.getElementById("imageChangeError").innerText = "이미지와 나이를 입력하세요.";
         return;
     }
 
@@ -38,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function () {
       // 변환된 결과 이미지 화면에 출력
       document.getElementById("resultImage").src = `http://127.0.0.1:8000${response_json['changed_image_url']}`;
 
-      console.log(response_json)
-
       downloadLink.href = 'data:image/jpeg;base64,' + response_json['image_data'];
       downloadLink.download = 'edited_image.jpg';
       downloadLink.style.display = 'block';
 
       changed_image_url = response_json['changed_image_url'];
+
+      document.getElementById("imageChangeError").style.opacity = "0%";
     } else { 
       document.getElementById("imageChangeError").style.opacity = "100%";
       document.getElementById("imageChangeError").innerText = response_json['error_msg'].split("-").slice(-1);
@@ -92,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   
     if (response.status === 201) {
-      alert("회원가입 완료");
       window.location.href = "http://127.0.0.1:5500";
     } else {
       document.getElementById("signupFailedError").style.opacity = "100%";
