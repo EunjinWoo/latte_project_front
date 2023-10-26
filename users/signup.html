@@ -4,37 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
     <script src="signup.js"></script>
   </head>
   <body>
-    <h1>회원가입 페이지</h1>
-    <form>
-      <input type="text" name="username" id="username" placeholder="username" /><br>
-      <input type="number" name="age" id="age" placeholder="age" />
-      <br />프로필 사진 첨부하기<br>
-      <input
-        type="file"
-        name="profile_img"
-        id="profile_img"
-        placeholder="profile_img"
-      /><br>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="password"
-      />
-      <br />
-      <button type="button" onclick="handleSignup()">회원가입하기</button>
-    </form>
-    <h3>프로필 사진 나이 변환하기</h3>
-    <input type="file" id="imageInput" accept="image/*">
-    <label for="ageInput">나이를 입력하세요:</label>
-    <input type="number" id="ageInput">
-    <button id="editButton">얼굴 특성 편집</button>
-    <br>
-    <img id="resultImage" style="max-width: 300px; max-height: 300px;">
-    <br>
-    <a id="downloadLink" style="display: none;">변환된 이미지 다운로드 하기</a>
+    <div style="
+      height: 80vh; width: 150vh; justify-content: center; 
+      align-items: center; position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      border: solid;"
+      class="container text-center border border-dark-subtle rounded shadow";
+    >
+      <div class="row" style="height: 100%;">
+        <div class="col-4 border" style="height: 100%; align-items: center; display: grid; justify-content: center;">
+          <p class="fs-2 fw-semibold">Signup</p>
+          <form>
+            <input type="text" name="username" id="username" placeholder="username" class="form-control fs-5 fw-light border border-dark-subtle" style="margin-bottom: 20px;"/>
+            <input type="password" name="password" id="password" placeholder="password" class="form-control fs-5 fw-light border border-dark-subtle" style="margin-bottom: 20px;"/>
+            <input type="number" name="age" id="age" placeholder="age" class="form-control fs-5 fw-light border border-dark-subtle"/>
+          </form>
+          <div style="margin-top: 50%;">
+            <p id="signupFailedError" class="fs-6 fw-light" style="color: red; opacity: 0%;">회원가입 실패 에러</p>
+            <button type="button" id="signupButton" class="btn btn-secondary">회원가입</button>
+          </div>
+        </div>
+
+        <div class="col-8 border" style="height: 100%; display: grid;">
+          <div style="display: flex; justify-content: center;">
+            <!-- <label for="ageInput" style="margin-top: 10%;">나이를 입력하세요:</label><input type="number" id="ageInput"> -->
+              <input type="number" class="form-control input-group mb-3" placeholder="변환하고자 하는 나이" id="ageInput" style="margin-top: 8%; height: fit-content; width: 40%;">
+          </div>
+          <div class="row" style="padding: 20px;">
+            <div class="col">
+              <img id="putImage" style="width: 300px; height: 300px;" src="/media/defaultProfile.png" class="shadow-sm rounded-circle border border-2"><br>
+              <label for="imageInput" class="btn btn-outline-secondary" style="margin-top: 2rem; object-fit: cover;">이미지 업로드</label><input type="file" id="imageInput" accept=".png, .jpg" style="display: none;" onchange="handleputImagePreview(this)">
+            </div>
+            <div class="col" style="display: grid; justify-content: center; align-items: center;">
+                <button type="button" id="editButton" class="btn btn-outline-info" style="align-self: center; color: gray; border: 1px solid lightgray; margin-bottom: 10vh;">></button>
+            </div>
+            <div class="col">
+              <img id="resultImage" style="width: 300px; height: 300px;" src="/media/defaultProfile.png" class="shadow-sm rounded-circle border border-2">
+              <span class="btn btn-outline-secondary" style="margin-top: 2rem;"><a id="downloadLink" style="display: block; text-decoration: none; color: gray">변환된 이미지 다운로드</a></span>
+            </div>
+          </div>
+          <p id="imageChangeError" class="fs-6 fw-light" style="color: red; opacity: 0%;">이미지 변환 에러</p>
+        </div>
+      </div>
+    </div>
+    
+
   </body>
 </html>
