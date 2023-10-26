@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
             method: 'POST',
             body: formData,
             headers: {
-                'ailabapi-api-key': 'key', //키 값에 입력
+                'ailabapi-api-key': 'O4FWH470wlnyLX5QMEeIuYs1sV02JOjfAmt6AzHkDNbidb9SWPIBBK9DRTf8LGuc', // 여기에 본인의 API 키를 넣으세요
             },
         });
 

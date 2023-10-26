@@ -22,7 +22,7 @@ async function fetchAIResponse(prompt) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer key` //키값에 입력
+            'Authorization': `Bearer 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`
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",  
