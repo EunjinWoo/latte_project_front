@@ -2,7 +2,7 @@
 const chatMessages = document.querySelector('#chat-messages');
 const userInput = document.querySelector('#user-input input');
 const sendButton = document.querySelector('#user-input button');
-const apiKey = '';
+const apiKey = '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';
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions'
 
 
@@ -13,6 +13,8 @@ function addMessage(sender, message) {
     messageElement.className = 'message';
     messageElement.textContent = `${sender}: ${message}`;
     chatMessages.prepend(messageElement);
+
+    console.log(messageElement);
 }
 
 
@@ -22,7 +24,7 @@ async function fetchAIResponse(prompt) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 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`
+            'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",  
@@ -54,6 +56,7 @@ async function fetchAIResponse(prompt) {
 
 sendButton.addEventListener('click', async () => {
     const message = userInput.value.trim();
+    console.log(message);
     if (message.length === 0) return;
     addMessage('나', message);
     userInput.value = '';
@@ -61,7 +64,7 @@ sendButton.addEventListener('click', async () => {
     addMessage('챗봇', aiResponse);
 });
 
-userInput.addEventListener('keydown', (event) => {
+userInput.addEventListener('keyup', (event) => { 
     if (event.key === 'Enter') {
         sendButton.click();
     }
