@@ -55,7 +55,7 @@ async function requestId() {
 async function requestUser() {
     const payload = localStorage.getItem("payload");
     const payload_parse = JSON.parse(payload);
-    console.log(payload_parse.user_id);
+    console.log(payload_parse);
 
     const url = new URL(window.location.href).searchParams;
     const id = url.get("id");
