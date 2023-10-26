@@ -24,7 +24,7 @@ async function fetchAIResponse(prompt) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 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`
+            'Authorization': `Bearer {key here}`
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",  
