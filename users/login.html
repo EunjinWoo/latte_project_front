@@ -4,20 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
     <script src="login.js"></script>
   </head>
   <body>
-    <h1>로그인 페이지</h1>
-    <form>
-      <input type="text" name="username" id="username" placeholder="username" />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="password"
-      />
-      <br />
-      <button type="button" onclick="handleLogin()">로그인 하기</button>
-    </form>
+    <div style="
+      height: 70vh; width: 60vh; justify-content: center; 
+      align-items: center; position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);"
+      class="card text-center border border-dark-subtle shadow";
+      >
+        <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <p class="card-title fs-2 fw-semibold" style="margin-bottom: 10vh; margin-top: 5vh;">Login</p>
+          <div  style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <form>
+              <input 
+                class="form-control form-control-lg fs-5 fw-light border border-dark-subtle" 
+                name="username" 
+                id="username" 
+                type="text" 
+                placeholder="username" 
+                style="margin-bottom: 20px; width: 40vh;"
+              >
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
+                style="margin-bottom: 20px;"
+                class="form-control form-control-lg fs-5 fw-light border border-dark-subtle"
+              />
+            </form>
+            <button type="button" onclick="handleLogin()" class="btn btn-secondary fs-6 fw-light" style="margin-bottom: 3vh;">로그인 하기</button>
+          </div>
+        </div>
+    </div>
   </body>
 </html>
