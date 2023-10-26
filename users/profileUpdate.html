@@ -4,14 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필 수정</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
     <script src="profileUpdate.js"></script>
 </head>
+<style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .profile-details {
+      text-align: center;
+    }
+
+    .headline {
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .profile-container {
+      text-align: center;
+      border: 1px solid lightgray;
+      padding: 10px;
+      width: 48%; /* 왼쪽 컨테이너 너비 설정 */
+    }
+
+    .articles-container {
+      border: 1px solid lightgray;
+      padding: 10px;
+    }
+
+    #profile_img {
+      border: 1px solid gray;
+      border-radius: 50%;
+      height: 200px;
+    }
+</style>
 <body>
     <form>
-        <label>profile image : </label><input type="file" id="update_image"> <br>
-        <label>username : </label><input type="text" id="update_username"> <br>
-        <label>age : </label><input type="number" id="update_age"> <br>
-        <button type="button" onclick="handleSubmit()">submit</button>
+        <h3 style="text-align: center;">회원정보 수정</h3>
+        <div class="articles-container">
+            <input type="text" name="username" id="update_username" placeholder="username" class="form-control fs-5 fw-light border border-dark-subtle" style="margin-bottom: 20px;"/>
+            <input type="number" name="age" id="update_age" placeholder="age" class="form-control fs-5 fw-light border border-dark-subtle" style="margin-bottom: 20px;"/>
+            <img id="putImage" style="width: 300px; height: 300px;" src="/media/defaultProfile.png" class="shadow-sm rounded-circle border border-2"><br>
+            <label for="update_image" class="btn btn-outline-secondary" style="margin-top: 2rem; object-fit: cover;">이미지 업로드</label><input type="file" id="update_image" accept=".png, .jpg" style="display: none;" onchange="handleputImagePreview(this)"><br>
+
+            <button type="button" class="btn btn-secondary" onclick="handleSubmit()">수정하기</button>
+        </div>
     </form>
 </body>
 </html>
